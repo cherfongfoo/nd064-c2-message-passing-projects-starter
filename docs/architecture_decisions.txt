@@ -1,0 +1,5 @@
+I kept the Connection and Person Service as Rest API as they already interface nicely with the React Frontend. 
+
+I choose gRPC for sending Location details to a Kafka queue. gRPC is choose for the speed as there might be alot of in coming request when a new event starts. The location data is stored into a Kafka queue for processing. Kafka reliability will ensure all the location data gets processed. Actually I also provide a RestApi option to send location details to a Kafka queue for other devices that might not have gRPC support.
+
+A constant python is polling from the Kafka queue to create new locations of user into the database.   

@@ -1,0 +1,15 @@
+export DB_USERNAME=ct_connections 
+export DB_PASSWORD=wowimsosecure
+export DB_HOST=localhost
+export DB_PORT=5432
+export DB_NAME=connections
+export KAFKA_BS_NAME=localhost
+export KAFKA_BS_PORT=31379
+export KAFKA_BROKER_LIST_NAME=localhost
+export KAFKA_BROKER_PORT=31379
+export CREATE_PERSON_TOPIC=CREATE_PERSON_TOPIC
+export CREATE_LOCATION_TOPIC=CREATE_LOCATION_TOPIC
+export PERSONS_API=localhost
+export PERSONS_API_PORT=30005
+export CONNECTION_API=localhost
+export CONNECTION_API_PORT=30007

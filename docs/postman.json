@@ -1,0 +1,97 @@
+{
+	"info": {
+		"_postman_id": "c3f53717-bdd8-4838-b264-4f21236c22a8",
+		"name": "myUdaConnect",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "http://localhost:30006/api/locations",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "  {\n   \"person_id\":\"8\",\n   \"latitude\":\"-200\",\n   \"longitude\":\"30\"\n  }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:30006/api/locations",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "30006",
+					"path": [
+						"api",
+						"locations"
+					]
+				},
+				"description": "Send a location data to Kafka Queue"
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:30005/api/persons",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:30005/api/persons",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "30005",
+					"path": [
+						"api",
+						"persons"
+					]
+				},
+				"description": "Get all persons from the database"
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:30007/api/persons/1/connection?start_date=2020-01-01&end_date=2020-12-30&distance=5",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:30007/api/persons/1/connection?start_date=2020-01-01&end_date=2020-12-30&distance=5",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "30007",
+					"path": [
+						"api",
+						"persons",
+						"1",
+						"connection"
+					],
+					"query": [
+						{
+							"key": "start_date",
+							"value": "2020-01-01"
+						},
+						{
+							"key": "end_date",
+							"value": "2020-12-30"
+						},
+						{
+							"key": "distance",
+							"value": "5"
+						}
+					]
+				},
+				"description": "Get connection of person"
+			},
+			"response": []
+		}
+	]
+}

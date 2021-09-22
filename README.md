@@ -1,3 +1,48 @@
+# To setup the project
+### Prerequsite: You will need to setup the k8 cluster in the as stated in the appendix. 
+## 1. Run the manifest yaml files in deployment/
+* 1.1 For DB, Kafka, service discovery setup
+```
+kubectl apply -f deployment/db-secret.yaml	
+
+kubectl apply -f deployment/db-configmap.yaml	
+
+kubectl apply -f deployment/postgres.yaml
+
+kubectl apply -f deployment/kafka-configmap.yaml
+
+kubectl apply -f deployment/my-svc-reg.yaml
+```
+## 2. Setup Kafka serivce
+* 2.1 Setup the Kafka and Zookeeper pods provided from Bitnami. This is configured to expose the Kakfa service externally. 
+```
+helm install -f modules/bitnamiKafka/values.yaml my-release modules/bitnamiKafka/
+```
+* 2.2 Create a pod to setup the "create_location" Kafka topic.
+```
+kubectl run my-release-kafka-client --restart='Never' --image docker.io/bitnami/kafka:2.8.0-debian-10-r84 --namespace default --command -- sleep infinity
+
+kubectl exec --tty -i my-release-kafka-client --namespace default -- bash
+
+kafka-topics.sh --topic create_location --bootstrap-server my-release-kafka.default.svc.cluster.local:9092
+```
+
+## 3. Deploy the remaining services in modules/*/deployment/
+```
+kubectl apply -f  modules/apiConnection/deployment/my-connection-api.yaml
+
+kubectl apply -f  modules/apiLocation/deployment/my-location-api.yaml
+
+kubectl apply -f  modules/apiPerson/deployment/my-person-api.yaml
+
+kubectl apply -f  modules/frontend/deployment/udaconnect-app.yaml
+
+kubectl apply -f  modules/locationConsumer/deployment/my-location-consumer.yaml
+
+kubectl apply -f  modules/locationProducer/deployment/my-location-grpc-api.yaml
+```
+
+# Appendix - Documentation from source
 # UdaConnect
 ## Overview
 ### Background

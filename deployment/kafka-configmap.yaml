@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: ConfigMap
+data:
+  KAFKA_BS_NAME: "my-release-kafka.default.svc.cluster.local"
+  KAFKA_BS_PORT: "9092"
+  KAFKA_BROKER_LIST_NAME: "my-release-kafka-0.my-release-kafka-headless.default.svc.cluster.local"
+  KAFKA_BROKER_PORT: "9092"
+  CREATE_PERSON_TOPIC: "create_persons"
+  CREATE_LOCATION_TOPIC: "create_location"
+metadata:
+  name: kafka-env

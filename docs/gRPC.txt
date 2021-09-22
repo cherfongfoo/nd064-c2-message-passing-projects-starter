@@ -1,0 +1,8 @@
+The data type of the message of the gRPC is (int) personID, (int) latitude and (int) longitude.
+listening on port 50051
+
+To test the gRPC: python modules/locationProducer/grpc_client.py
+It will send a message to Kafka and get picked up to create 2 records in the database.
+
+The building of the docker images is very slow, so I also copied out the pre-built grpcio wheel files when they are built. The next time when I build the images again, I pip install from the wheel.
+
